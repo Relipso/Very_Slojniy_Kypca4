@@ -6,13 +6,13 @@ class Vacancy:
     def __init__(self, title, link, salary=None, description=None, city=None):
         self.title = title
         self.link = link
-        self.salary = salary if salary else "Зарплата не указана"
+        self.salary = salary if salary is not None else "Зарплата не указана"
         self.description = description
         self.city = city if city else "Город не указан"
 
     def __repr__(self):
         return (f"Vacancy(title='{self.title}', link='{self.link}',"
-                f" salary='{self.salary}', description='{self.description}, city='{self.city}')")
+                f" salary={self.salary}, description='{self.description}', city='{self.city}')")
 
     def __eq__(self, other):
         return self.salary == other.salary
