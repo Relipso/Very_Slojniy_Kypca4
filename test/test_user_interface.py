@@ -57,6 +57,9 @@ def example_print(monkeypatch):
 
 
 def test_user_interface_load_vacancies(example_hh, example_file_worker, example_input, example_print):
+    """
+    Тестирует загрузку вакансий через пользовательский интерфейс.
+    """
     example_input.extend(['1', 'Python', '6'])
     user_interface()
     assert len(example_hh.vacancies) == 1
@@ -66,14 +69,20 @@ def test_user_interface_load_vacancies(example_hh, example_file_worker, example_
 
 
 def test_user_interface_save_vacancies(example_hh, example_file_worker, example_input, example_print):
+    """
+    Тестирует сохранение вакансий через пользовательский интерфейс.
+    """
     example_hh.vacancies = [Vacancy('Python Developer', 'http://example.com',
-                                 100000, 'Develop software', 'City')]
+                                    100000, 'Develop software', 'City')]
     example_input.extend(['3', '6'])
     user_interface()
     assert "Вакансии сохранены в файл." in example_print
 
 
 def test_user_interface_load_vacancies_from_file(example_hh, example_file_worker, example_input, example_print):
+    """
+    Тестирует загрузку вакансий из файла через пользовательский интерфейс.
+    """
     example_input.extend(['4', '6'])
     user_interface()
     assert len(example_hh.vacancies) == 1
@@ -82,12 +91,18 @@ def test_user_interface_load_vacancies_from_file(example_hh, example_file_worker
 
 
 def test_user_interface_remove_vacancies(example_hh, example_file_worker, example_input, example_print):
+    """
+    Тестирует удаление информации о вакансиях из файла через пользовательский интерфейс.
+    """
     example_input.extend(['5', '6'])
     user_interface()
     assert "Информация о вакансиях удалена из файла." in example_print
 
 
 def test_user_interface_exit(example_hh, example_file_worker, example_input, example_print):
+    """
+    Тестирует выход из программы через пользовательский интерфейс.
+    """
     example_input.extend(['6'])
     user_interface()
     assert "Выход из программы." in example_print
